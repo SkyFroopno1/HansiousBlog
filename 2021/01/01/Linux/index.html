@@ -1,0 +1,651 @@
+
+<!DOCTYPE html>
+<html lang="en ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hexo || Linux快速上手</title>
+    <meta name="author" content="John Doe">
+    <meta name="description" content=" ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="/images/avatar.png">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="layout">
+        <transition name="into">
+            <div v-show="show_page" style="display: none;">
+                <div id="menu_show">
+                     
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Hexo</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>home</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>about</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>archives</span>
+        </a>
+        
+        <a href="/like/categories">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>categories</span>
+        </a>
+        
+        <a href="/like/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>tags</span>
+        </a>
+        
+        <a target="_blank" rel="noopener" href="https://en.korilin.com">
+            <span>
+                <a-icon type="compass" theme="filled" />
+            </span>
+            <span>英文博客</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Hexo</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">about</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">archives</div>
+                </div>
+            </a>
+            
+            <a href="/like/categories">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">categories</div>
+                </div>
+            </a>
+            
+            <a href="/like/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">tags</div>
+                </div>
+            </a>
+            
+            <a target="_blank" rel="noopener" href="https://en.korilin.com">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="compass" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">英文博客</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+                </div>
+
+                <div id="main">
+                     
+<link rel="stylesheet" href="/css/post-body.css">
+<div class="article">
+    <div>
+        <h1>Linux快速上手 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/1/1
+        </span>
+
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/运维" style=color:#879cff>
+                    运维
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+
+    <div class="content" v-pre>
+        <h1 id="Linux基础"><a href="#Linux基础" class="headerlink" title="Linux基础"></a>Linux基础</h1><hr>
+
+<p>Kali Linux ： 安全渗透测试使用</p>
+<h2 id="开机登录"><a href="#开机登录" class="headerlink" title="开机登录"></a>开机登录</h2><p>开机会启动许多程序。它们在Windows叫做”服务” ( service )，在Linux就叫做”守护进程” ( daemon ) 。<br>开机成功后，它会显示一个文本登录界面，这个界面就是我们经常看到的登录界面，在这个登录界面中会提示用户输入用户名，而用户输入的用户将作为参数传给login程序来验证用户的身份，密码是不显示的，输完回车即可！<br>一般来说，用户的登录方式有三种:</p>
+<ul>
+<li>命令行登录</li>
+<li>ssh登录</li>
+<li>图形界面登录</li>
+</ul>
+<p>最高权限账户为root，可以操作一切!</p>
+<h2 id="关机"><a href="#关机" class="headerlink" title="关机"></a>关机</h2><pre><code class="bash">sync # 将数据由内存同步到硬盘
+shutdown # 关机
+shutdown -h 10 # 10分钟后关机
+shutdown -h 20:25 # 系统会在今天的20:25关机
+shutdown -h +10 #
+shutdown -r now # 立马重启
+reboot # 同上
+halt # 关闭系统
+</code></pre>
+<h2 id="系统的目录结构"><a href="#系统的目录结构" class="headerlink" title="系统的目录结构"></a>系统的目录结构</h2><p>==一切皆文件==</p>
+<p>根目录: <code>/</code>所有的文件都在这个目录下</p>
+<p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20210902221238313.png" alt="image-20210902221238313"></p>
+<ul>
+<li>/bin : Binary的缩写，这个目录存放的是最常用的命令</li>
+<li>/boot : 这里存放的是启动Linux时使用的一些核心文件，包括一些连接文件及镜像文件(不要动)</li>
+<li>/dev : dev时Device(设备)的缩写，存放的时Linux的外部设备，再Linux中访问设备的方式和访问文件的方式是相同的</li>
+<li><strong>/etc : 用来存放所有的系统管理所需要的配置文件和子目录</strong></li>
+<li><strong>/home : 用户的主目录，在Linux中，每个用户都有一个自己的目录，一般该目录是以用户的帐号命名的</strong></li>
+<li>/lib : 存放着系统最近本的动态连接共享库，起作用类似于Windows里的DLL文件(不要动)</li>
+<li>/lost+found : 一般情况下是孔的，当系统非法关机后，这里会存放一些文件(不要动)</li>
+<li>/media : Linux系统会自动识别一些设备，例如U盘、光驱等等，当识别后，Linux会把识别的设备挂载到这个目录下</li>
+<li>/mnt : 系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载到/mnt/上，然后进入该目录就可以查看光驱里的内容了</li>
+<li><strong>/opt : 给主机额外安装软件所摆放的目录，默认是空的</strong></li>
+<li>/proc : 虚拟目录，是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息</li>
+<li><strong>/root : 系统管理员，也称作超级权限这的用户主目录</strong></li>
+<li>/sbin  : s就是Super User的意思，这里存放的是系统管理员使用的系统管理程序</li>
+<li>/srv : 该目录存放一些服务启动之后需要提取的数据</li>
+<li>/sys : 是Linux2.6内核的很大的变化，目录下安装了2.5内核新出现的一个文件系统sysfs</li>
+<li><strong>/tmp : 用来存放一些临时文件</strong>(用完即丢的文件可以放在这个目录下)</li>
+<li><strong>/usr</strong> : ==非常重要的目录==，用户的很多应用程序和文件都放在这个目录下，类似于Windos下的program Files目录</li>
+<li>/usr/bin : 系统用户使用的应用程序</li>
+<li>/usr/sbin : 超级用户使用的比较高级的管理程序和系统守护程序</li>
+<li>/usr/src : 内核源代码默认的放置目录</li>
+<li><strong>/var : 存放着不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下，包括各种日志文件</strong></li>
+<li>/run : 是一个临时文件系统，存储系统启动以来的信息，当系统重启时，这个目录下的文件应该被删掉或清除。</li>
+<li><strong>/www : 存放服务器网站相关的资源，比如环境、网站的项目</strong></li>
+</ul>
+<blockquote>
+<p>基本属性</p>
+</blockquote>
+<p>Linux系统是一种典型的多用户系统，不同的用户处于不同的地位，拥有不同的权限。为了保护系统的安全性，Linux系统对不同的用户访问同一文件（包括目录文件)的权限做了不同的规定。</p>
+<p>在Linux中我们可以使用<code>ll</code>或者<code>ls -l</code>命令来显示一个文件的属性以及文件所属的用户和组，如︰</p>
+<p>实例中，boot文件的第一个属性用”d”表示。”d””在Linux中代表该文件是一个目录文件。在Linux中第一个字符代表这个文件是目录、文件或链接文件等等:</p>
+<ul>
+<li>当为[ d]则是目录</li>
+<li>当为[-]则是文件;</li>
+<li>若是[Ⅰ]则表示为链接文档(link file ) ;</li>
+<li>若是[ b ]则表示为装置文件里面的可供储存的接口设备（可随机存取装置);</li>
+<li>若是[ c]则表示为装置文件里面的串行端口设备，例如键盘、鼠标(一次性读取装置)。</li>
+</ul>
+<p>接下来的字符中，以三个为一组，且均为『rwx』的三个参数的组合。其中，[ r ]代表可读(read)、[ w ]代表可写(write)、[ x]代表可执行(execute)。要注意的是，这三个权限的位置不会改变，如果没有权限，就会出现减号[ - ]而已。每个文件的属性由左边第一部分的10个字符来确定（如下图）∶</p>
+<p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20210903093718642.png" alt="image-20210903093718642"></p>
+<blockquote>
+<p>修改文件属性</p>
+</blockquote>
+<ul>
+<li>更改文件属组</li>
+</ul>
+<pre><code class="bash">chgrp [-R] 数组名 文件名
+</code></pre>
+<ul>
+<li>更改文件属主，也可以同时更改文件属组</li>
+</ul>
+<pre><code class="bash">chown [-R] 属主名 文件名
+chown [-R] 属主名: 属组名 文件名
+</code></pre>
+<ul>
+<li><strong>更改文件的九个属性</strong></li>
+</ul>
+<pre><code class="bash">chmod [-R] xyz 文件或目录
+</code></pre>
+<p>Linux文件属性有两种设置方法，一种是数字，一种是符号。<br>Linux文件的基本权限就有九个，分别是owner/group/others三种身份各有自己的read/write/execute权限。<br>先复习一下刚刚上面提到的数据∶文件的权限字符为︰『-wxrwXrwx』，这九个权限是三个三个一组的!其中，我们可以使用数字来代表各个权限，各权限的分数对照表如下:</p>
+<pre><code>r:4     w:2   x:1
+可读可写不可执行   rw-   6
+可读可写可执行     rwx   7
+chomd 777 就代表所有用户都赋予可读可写可执行
+</code></pre>
+<h2 id="文件内容查看"><a href="#文件内容查看" class="headerlink" title="文件内容查看"></a>文件内容查看</h2><ul>
+<li><p>cat 由第一行开始显示文件内容</p>
+</li>
+<li><p>tac 从最后一行开始显示，(冷知识 : tac是cat的倒着写)</p>
+</li>
+<li><p>nl 显示的时候，顺便输出行号</p>
+</li>
+<li><p>more 一页一页的显示文件内容(空格表示翻页，enter表示向下看一行，:f可以查看行号)</p>
+</li>
+<li><p>less 与 more类似，但是比more更好的是可以往前翻页(上下键代表上下翻动页面，退出使用q命令，<code>/</code> 可以向下查询，<code>?</code>向上查询 n继续查询下一个,N查询上一个)</p>
+</li>
+<li><p>head 只看头几行 <code>head -n 行数</code></p>
+</li>
+<li><p>tail只看尾部几行 <code>tail -n 行数</code></p>
+</li>
+</ul>
+<p>ifconfig 查看网络配置</p>
+<h2 id="Vim编辑器"><a href="#Vim编辑器" class="headerlink" title="Vim编辑器"></a>Vim编辑器</h2><p>所有的Unix Like系统都会内建vi文书编辑器，其他的文书编辑器则不一定会存在。<br>连vim的官方网站(<a target="_blank" rel="noopener" href="http://www.vim.org)自己也说vim是一个程序开发工具而不是文字处理软件./">http://www.vim.org)自己也说vim是一个程序开发工具而不是文字处理软件。</a></p>
+<p>vim键盘图:</p>
+<p> <img src="https://img0.baidu.com/it/u=510349211,2341950463&fm=26&fmt=auto&gp=0.jpg" alt="img"></p>
+<blockquote>
+<p>三种使用模式</p>
+</blockquote>
+<p>基本上vivim 共分为三种模式，分别是命令模式(Command mode )，输入模式( lnsert mode)和底线命令模式( Lastline mode )。这三种模式的作用分别是:<br><strong>命令模式</strong><br>用户刚刚启动vi/vim，便进入了命令模式。<br>此状态下敲击键盘动作会被Vim识别为命令，而非输入字符。比如我们此时按下i，并不会输入一个字符，i被当作了一个命令。以下是常用的几个命令∶</p>
+<ul>
+<li><code>i</code> : 切换到输入模式，以输入字符。</li>
+<li><code>x</code> : 删除当前光标所在处的字符。</li>
+<li><code>:</code>  :切换到底线命令模式，以在最底一行输入命令。如果是编辑模式需要先退出编辑模式。<br>若想要编辑文本∶启动Vim，进入了命令模式，按下i，切换到输入模式。命令模式只有一些最基本的命令，因此仍要依靠底线命令模式输入更多命令。</li>
+</ul>
+<p><strong>输入模式</strong></p>
+<p>在命令模式下按下i就进入了输入模式</p>
+<p>在输入模式中：</p>
+<ul>
+<li>字符按键以及shift组合，输入字符</li>
+<li>Enter，回车键，换行</li>
+<li>Backspace删除光标的前一个字符</li>
+<li>Del : 删除键，删除光标后的一个字符</li>
+<li>方向键，移动光标</li>
+<li>Home/End : 以动光标到行首/行尾处</li>
+<li>Page Up / Page Down : 上/下翻页</li>
+<li>Insert : 切换光标为输入/替换模式，光标变成竖线/下划线</li>
+<li>ESC : 退出输入模式，切换到命令模式</li>
+</ul>
+<p><strong>底线命令模式</strong></p>
+<p>在命令模式下按下:（英文冒号)就进入了底线命令模式。<br>底线命令模式可以输入单个或多个字符的命令，可用的命令非常多。在底线命令模式中，基本的命令有（已经省略了冒号)︰</p>
+<ul>
+<li>q 退出程序</li>
+<li>w 保存文件</li>
+<li>ESC 退出底线命令模式</li>
+</ul>
+<blockquote>
+<p> Vim按键说明</p>
+</blockquote>
+<p><strong>命令模式</strong></p>
+<p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20210903165526545.png" alt="image-20210903165526545"></p>
+<p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20210903165601194.png" alt="image-20210903165601194"></p>
+<p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20210903165748059.png" alt="image-20210903165748059"></p>
+<p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20210903165807546.png" alt="image-20210903165807546"></p>
+<p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20210903165827848.png" alt="image-20210903165827848"></p>
+<p><strong>输入模式</strong></p>
+<p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20210903165906653.png" alt="image-20210903165906653"></p>
+<p><strong>底线命令模式</strong></p>
+<p><em>只需要记前几个</em></p>
+<p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20210903165928896.png" alt="image-20210903165928896"></p>
+<p>==set nu== : 设置行号,代码中十分常用</p>
+<h2 id="帐号管理"><a href="#帐号管理" class="headerlink" title="帐号管理"></a>帐号管理</h2><blockquote>
+<p> <code>useradd</code> 添加用户</p>
+</blockquote>
+<p>useradd -选项 用户名</p>
+<p>-m ： 自动创建这个用户的主目录 /home/用户名</p>
+<p>-g : 用户组，指定用户所属的用户组</p>
+<p>-G : 用户组，用户组 指定用户所属的附加组</p>
+<p>理解一下本质:Linux中一切皆文件，这里的添加用户说白了就是往某一个文件中写入用户的信息了! 位置：/etc/passwd</p>
+<blockquote>
+<p><code>userdel</code> 删除用户</p>
+</blockquote>
+<p>userdel -r 用户名 ： 一般会将用户目录一并删除</p>
+<blockquote>
+<p><code>usermod</code> 修改用户</p>
+</blockquote>
+<p>usermod 对应修改的内容  修改那个用户</p>
+<p>修改完毕后以配置文件内容为准</p>
+<blockquote>
+<p>切换用户</p>
+</blockquote>
+<ol>
+<li><p>切换用户的命令为: su username 【username是 用户名 】</p>
+</li>
+<li><p>从普通用户切换到root用户，还可以使用命令 : sudo su</p>
+</li>
+<li><p>在终端输入exit或logout或使用快捷方式ctrl+d，可以退回到原来用户，其实ctrl+d也是执行的exit命令</p>
+</li>
+<li><p>在切换用户时，如果想在切换用户之后使用新用户的工作环境，可以在su和username之间加 - ，例如:【su - root】</p>
+<ul>
+<li><p>$表示普通用户</p>
+</li>
+<li><p>#表示超级用户，也就是root用户</p>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>密码设置问题</p>
+</blockquote>
+<p>通过root创建用户的时候要配置密码</p>
+<p><em>Linux上输入密码不会显示</em></p>
+<p><code>passwd</code> 用户名 : 修改密码</p>
+<blockquote>
+<p>锁定账户</p>
+</blockquote>
+<p>passwd -l 用户名 : 锁定之后这个用户就不能登录了</p>
+<h2 id="用户组管理"><a href="#用户组管理" class="headerlink" title="用户组管理"></a>用户组管理</h2><p>属组</p>
+<p>每个用户都有一个用户组，系统可以对一个用户组中的所有用户进行集中管理(开发、测试、运维)。不同Linux系统对用户组的规定有所不同，如Linux下的用户属于与它同名的用户组，这个用户组在创建用户时同时创建。<br>用户组的管理涉及用户组的添加、删除和修改。组的增加、删除和修改实际上就是对/etc/group文件的更新。</p>
+<blockquote>
+<p>groupadd 添加用户组</p>
+</blockquote>
+<p>创建完用户组后，可以得到一个组的id，这个id是可以指定的，若不指定就是自增1</p>
+<blockquote>
+<p>groupdel 删除用户组</p>
+</blockquote>
+<p>删除对应的文件</p>
+<blockquote>
+<p>groupmod 修改用户组</p>
+</blockquote>
+<p><code>groupmod -g id -n 新名字 原名字</code> </p>
+<blockquote>
+<p>切换用户组</p>
+</blockquote>
+<p>newgrp 用户组</p>
+<h2 id="磁盘管理"><a href="#磁盘管理" class="headerlink" title="磁盘管理"></a>磁盘管理</h2><ul>
+<li>df : 列出文件系统整体的磁盘使用量</li>
+<li>du : 检查磁盘空间使用量<ul>
+<li>-a 可以看到隐藏文件以及子目录</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>挂载外部设备</p>
+</blockquote>
+<p>mount  外部设备  /mnt/</p>
+<p>挂载到mnt目录下，来实现访问</p>
+<blockquote>
+<p>卸载外部设备</p>
+</blockquote>
+<p>umount </p>
+<p>-f : 强制卸载</p>
+<h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><ul>
+<li><strong>ps</strong>: 查看当前系统中正在执行的各种进程的信息<ul>
+<li>-a 显示当前终端运行的所有的进程信息</li>
+<li>-u 以用户的信息显示进程</li>
+<li>-x 显示后台运行进程的参数</li>
+<li>-aux 可以查看所有的进程</li>
+<li>-ef 可以查看到父进程的信息<ul>
+<li>看父进程我们一般可以通过目录树的结构来查看：pstree -p 显示父id  -u 显示用户组</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>kill</strong> : 结束进程<ul>
+<li>-(id) 结束进程id为(id)的进程</li>
+</ul>
+</li>
+</ul>
+<h2 id="其他常用命令"><a href="#其他常用命令" class="headerlink" title="其他常用命令"></a>其他常用命令</h2><pre><code class="bash"># | 在Linux中，叫做管道符 
+# grep 查找文件中符合条件的字符串
+</code></pre>
+<h2 id="Linux链接-了解"><a href="#Linux链接-了解" class="headerlink" title="Linux链接 (了解)"></a>Linux链接 (了解)</h2><p>分为两种：硬链接、软链接</p>
+<p>硬链接 : A——B 假设B是A的硬链接，那么他们两个指向了同一个文件，允许一个文件拥有多个路径，用户可以通过这种机制建立硬链接到一些重要文件上，防止误删</p>
+<p>软链接 : 类似Windows下的快捷方式，删除了源文件，快捷方式也访问不了</p>
+<p>创建链接: <code>ln</code> 命令</p>
+<p><code>touch</code>可以创建文件</p>
+<p><code>echo</code> 输入字符串</p>
+<h1 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h1><p>安装软件一般有三种方式：rpm、解压缩安装、yum在线安装</p>
+<h2 id="JDK安装"><a href="#JDK安装" class="headerlink" title="JDK安装"></a>JDK安装</h2><p>开发Java程序必要的环境</p>
+<ol>
+<li><p>下载JDK rpm包</p>
+</li>
+<li><p>安装java环境</p>
+<pre><code class="bash"># 检查当前是否存在Java环境。
+##卸载方式: rpm -qa|grep jdk  查出版本号
+##########  rpm -e --nodeps 上述版本号
+
+ rpm -ivh jdk-8u301-linux-x64.rpm # rpm安装
+</code></pre>
+</li>
+<li><p>配置环境变量</p>
+<pre><code class="bash"># 在/etc/profile文件中修改
+JAVA_HOME=/usr/java/jdk1.8.0_301-amd64
+CLASSPATH=%JAVA_HOME%/lib;=%JAVA_HOME%/jre/lib
+PATH=$JAVA_HOME/bin;$JAVA_HOME/jre/bin
+export PATH CLASSPATH JAVA_HOME # 导出
+</code></pre>
+</li>
+<li><p>让配置生效</p>
+<pre><code class="bash">source /etc/profile
+</code></pre>
+</li>
+</ol>
+<blockquote>
+<p>发布项目</p>
+</blockquote>
+<ol>
+<li>打包发布</li>
+<li>开放防火墙端口</li>
+<li>重启防火墙</li>
+</ol>
+<pre><code class="bash">#开启防火墙端口
+firewa1l-cmd --zone=public --add-port=9000/tcp --permanen
+#重启防火墙
+systemctl restart firewa11d.service
+#查番所有开启的端口，如果是阿里云，需要配置安全组规则!
+firewa1l -cmd --list-ports
+</code></pre>
+<h2 id="Tomcat安装"><a href="#Tomcat安装" class="headerlink" title="Tomcat安装"></a>Tomcat安装</h2><ol>
+<li><p>下载Tomcat-Linux压缩包</p>
+</li>
+<li><p>解压</p>
+<pre><code class="bash">tar -Zxvf apache-tomcat-9.0.22.tar.gz
+</code></pre>
+</li>
+<li><p>运行！</p>
+</li>
+</ol>
+<pre><code class="bash"># 执行 ./startuo.sh
+# 停止 ./shotdown.sh
+</code></pre>
+<p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20210903200459651.png" alt="image-20210903200459651"></p>
+<p>如果对应防火墙端口已经开放，并且Aliyun服务器端口也已开放</p>
+<h2 id="防火墙的配置命令"><a href="#防火墙的配置命令" class="headerlink" title="防火墙的配置命令"></a>防火墙的配置命令</h2><pre><code class="bash">#查看firewa11服务状态
+systemctl status firewalld
+#开启、重启、关闭、firewalld.service服务
+#开启
+service firewalld start
+#重启
+service firewalld restart
+#关闭
+service firewalld stop
+#查看防火墙规则
+firewall-cmd --list-all  #查看全部信息
+firewall-cmd --1ist-ports  #只看端口信息
+#开启端口
+开端口命令: firewall-cmd --zone=public --add-port=8080/tcp --permanent
+重启防火墙: systemctl restart firewalld.service
+命令含义:
+--zone # 作用域
+--add-port=80/tcp # 添加端口，格式为:端口I/通讯协议
+--permlanent # 永久生效，没有此参数重启后失效
+
+</code></pre>
+<p>域名解析后,如果端口是80 - http或者443-https可以直接访问,如果是9000 8080 ,就需要通过Apcahe或者Nginx做一下反向代理即可,配置文件即可</p>
+<h2 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h2><p>官方文档：<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/centos/">https://docs.docker.com/engine/install/centos/</a></p>
+<blockquote>
+<p>安装</p>
+</blockquote>
+<ol>
+<li>检测CentOS版本 <code>cat /etc/redhat-release</code></li>
+<li>安装准备环境<code>yum -y install gcc</code></li>
+<li>卸载旧版本</li>
+<li>安装新版本(依据官方文档步骤)</li>
+</ol>
+<h1 id="拓展：VMware本地网络配置"><a href="#拓展：VMware本地网络配置" class="headerlink" title="拓展：VMware本地网络配置"></a>拓展：VMware本地网络配置</h1><p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20210903204726785.png" alt="image-20210903204726785"></p>
+<p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20210903204926304.png" alt="image-20210903204926304"></p>
+<p>桥接模式：虚拟机可以直接访问到主机</p>
+<p>==注意：桥接模式一定要桥接到正确的网卡==</p>
+<p><strong>以下是静态网络配置</strong></p>
+<p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20210903205424394.png" alt="image-20210903205424394"></p>
+<p>图形化界面配置网络：</p>
+<pre><code class="bash">nm-connection-editor
+</code></pre>
+
+    </div>
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <div id="comment">
+        <div id="gitalk-container">
+        </div>
+    </div>
+    
+</div>
+                     
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2018 - 2022 Hexo
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @John Doe
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
+        
+    </div>
+
+</footer>
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+                </div>
+            </div>
+        </transition>
+    </div>
+
+    <script>
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100
+        },
+        created: function () {
+            var that = this
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+            home_click: function () {
+                window.scrollTo({
+                    top: window.innerHeight - 80,
+                    behavior: "smooth",
+                });
+            }
+        }
+    })
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: 'hexo-theme-particle',      // The repository of store comments,
+        owner: 'korilin',
+        admin: ['korilin'],
+        language: 'en',
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: true  // Facebook-like distraction free mode
+    })
+    gitalk.render('gitalk-container')
+</script>
+
+</body>
+
+</html>
