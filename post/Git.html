@@ -215,17 +215,19 @@
 <p>1） Git\etc\gitconfig : Git安装目录下的gitconfig，系统级</p>
 <p>2）  C:\Users\用户名\gitconfig 只适用于当前登录用户查看</p>
 <p>查看全部配置：</p>
-<pre><code class="bash">git config -l
-</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config -l<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>查看系统配置:</p>
-<pre><code class="bash">git config --system --list
-</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config --system --list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>查看当前用户：</p>
-<pre><code class="bash">git config --global --list
-</code></pre>
-<h3 id="必做：设置用户名与邮箱："><a href="#必做：设置用户名与邮箱：" class="headerlink" title="*必做：设置用户名与邮箱："></a>*必做：设置用户名与邮箱：</h3><pre><code class="bash">git config --global user.name &quot;用户名&quot;
-git config --global user.email &quot;邮箱&quot;
-</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config --global --list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h3 id="必做：设置用户名与邮箱："><a href="#必做：设置用户名与邮箱：" class="headerlink" title="*必做：设置用户名与邮箱："></a>*必做：设置用户名与邮箱：</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config --global user.name <span class="token string">"用户名"</span>
+<span class="token function">git</span> config --global user.email <span class="token string">"邮箱"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>这个邮箱需要保证是真实邮箱，后面有需要</p>
 <h1 id="三、Git的工作原理"><a href="#三、Git的工作原理" class="headerlink" title="三、Git的工作原理"></a>三、Git的工作原理</h1><h2 id="3-1-配置环境变量"><a href="#3-1-配置环境变量" class="headerlink" title="3.1 配置环境变量"></a>3.1 配置环境变量</h2><p>将 目录\Git\cmd 配置进去</p>
 <h2 id="3-2-Git基本理论-核心"><a href="#3-2-Git基本理论-核心" class="headerlink" title="3.2 Git基本理论(核心)"></a>3.2 Git基本理论(核心)</h2><h3 id="工作区域"><a href="#工作区域" class="headerlink" title="工作区域"></a>工作区域</h3><p>Git本地有三个工作区域:</p>
@@ -254,12 +256,16 @@ git config --global user.email &quot;邮箱&quot;
 <p>git管理的文件有三种状态︰已修改( modified ) ,已暂存( staged ) ,已提交(committed)</p>
 <h2 id="3-3-Git项目搭建"><a href="#3-3-Git项目搭建" class="headerlink" title="3.3 Git项目搭建"></a>3.3 Git项目搭建</h2><h3 id="3-3-1创建工作目录与常用指令"><a href="#3-3-1创建工作目录与常用指令" class="headerlink" title="3.3.1创建工作目录与常用指令"></a>3.3.1创建工作目录与常用指令</h3><p>工作目录(WorkSpace)一般就是你希望Git帮助你管理的文件夹，可以是你项目的目录，也可以是一个空目录，建议不要有中文。</p>
 <p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20210502171745536.png" alt="image-20210502171745536"></p>
-<h3 id="3-3-2-本地仓库搭建-及-克隆远程仓库"><a href="#3-3-2-本地仓库搭建-及-克隆远程仓库" class="headerlink" title="3.3.2 本地仓库搭建 及 克隆远程仓库"></a>3.3.2 本地仓库搭建 及 克隆远程仓库</h3><pre><code class="bash"># 初始化方法一，完成后在本目录多了一个 .git隐藏文件
-git init 
+<h3 id="3-3-2-本地仓库搭建-及-克隆远程仓库"><a href="#3-3-2-本地仓库搭建-及-克隆远程仓库" class="headerlink" title="3.3.2 本地仓库搭建 及 克隆远程仓库"></a>3.3.2 本地仓库搭建 及 克隆远程仓库</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 初始化方法一，完成后在本目录多了一个 .git隐藏文件</span>
+<span class="token function">git</span> init 
 
-# 初始化方法二：克隆远程仓库
-git clone [URL]
-</code></pre>
+<span class="token comment"># 初始化方法二：克隆远程仓库</span>
+<span class="token function">git</span> clone <span class="token punctuation">[</span>URL<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
 <h1 id="四、Git文件操作"><a href="#四、Git文件操作" class="headerlink" title="四、Git文件操作"></a>四、Git文件操作</h1><h2 id="4-1-文件的状态"><a href="#4-1-文件的状态" class="headerlink" title="4.1 文件的状态"></a>4.1 文件的状态</h2><p>版本控制就是对文件的版本控制，要对文件进行修改、提交等操作，首先要知道文件当前在什么状态，不然可能会提交了现在还不想提交的文件，或者要提交的文件没提交上。</p>
 <ul>
 <li><strong>Untracked</strong>:未跟踪,此文件在文件夹中，但并没有加入到git库,不参与版本控制.通过<strong>git add</strong>状态变为<strong>staged</strong></li>
@@ -268,12 +274,14 @@ git clone [URL]
 <li><strong>Staged</strong>:暂存状态.执行<strong>git commit</strong>则将修改同步到库中,这时库中的文件和本地文件又变为一致,文件为<strong>unmodify</strong>状态.执行<strong>git reset HEAD filename</strong>取消暂存，文件状态为<strong>Modified</strong></li>
 </ul>
 <p>查看文件状态：</p>
-<pre><code class="bash">git status
-</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> status<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>提交到本地仓库：</p>
-<pre><code class="bash">git add . # 提交所有文件到暂存区
-git commit -m &quot;&quot; # 提交到本地仓库，-m是提交附带的信息
-</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span> <span class="token comment"># 提交所有文件到暂存区</span>
+<span class="token function">git</span> commit -m <span class="token string">""</span> <span class="token comment"># 提交到本地仓库，-m是提交附带的信息</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
 <h2 id="4-2-忽略文件"><a href="#4-2-忽略文件" class="headerlink" title="4.2 忽略文件"></a>4.2 忽略文件</h2><p>有些时候我们不想把某些文件纳入版本控制中，比如数据库文件，临时文件，设计文件等在主目录下建立”<strong>.gitignore</strong>“文件，此文件有如下规则∶</p>
 <ol>
 <li>忽略文件中的空行或以井号(#）开始的行将会被忽略。</li>
@@ -282,12 +290,14 @@ git commit -m &quot;&quot; # 提交到本地仓库，-m是提交附带的信息
 <li>如果名称的最前面是一个路径分隔符(/ )，表示要忽略的文件在此目录下，而子目录中的文件不忽略。</li>
 <li>如果名称的最后面是一个路径分隔符(/)，表示要忽略的是此目录下该名称的子目录，而非文件（默认文件或目录都忽略)。</li>
 </ol>
-<pre><code class="bash">*.txt # 忽略所有 .txt结尾的文件，这样的话上传就不会被选中！
-!lib.txt # 但lib.txt除外
-/temp  # 仅忽略项目根目录下的TODO文件，不包括其他目录temp
-build/ # 忽略build/ 目录下的所有文件
-doc/*.txt # 会忽略 doc/motes.txt 但不会忽略 doc/server/arch.txt
-</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">*.txt <span class="token comment"># 忽略所有 .txt结尾的文件，这样的话上传就不会被选中！</span>
+<span class="token operator">!</span>lib.txt <span class="token comment"># 但lib.txt除外</span>
+/temp  <span class="token comment"># 仅忽略项目根目录下的TODO文件，不包括其他目录temp</span>
+build/ <span class="token comment"># 忽略build/ 目录下的所有文件</span>
+doc/*.txt <span class="token comment"># 会忽略 doc/motes.txt 但不会忽略 doc/server/arch.txt</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h1 id="五、使用Gitee或者GitHub等远程仓库"><a href="#五、使用Gitee或者GitHub等远程仓库" class="headerlink" title="五、使用Gitee或者GitHub等远程仓库"></a>五、使用Gitee或者GitHub等远程仓库</h1><blockquote>
 <p>github是有墙的，比较慢，在国内的话，我们一般使用gitee ，公司中有时候会搭建自己的gitlab服务器</p>
 </blockquote>
@@ -295,43 +305,46 @@ doc/*.txt # 会忽略 doc/motes.txt 但不会忽略 doc/server/arch.txt
 <li>登录/注册，完善个人信息</li>
 <li>设置本机绑定SSH公钥，实现免密码登录 【重点】</li>
 </ol>
-<pre><code class="bash"># 进入 C:\Users\用户名\.ssh
-# 生成SSH公钥
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 进入 C:\Users\用户名\.ssh</span>
+<span class="token comment"># 生成SSH公钥</span>
 ssh-keygen
-# 默认 rsa加密算法， ssh-keygen -t rsa
-# 完成后生成两个文件：id_rsa 、 id_rsa.pub
-# 其中 .pub是公钥，另一个是私钥
+<span class="token comment"># 默认 rsa加密算法， ssh-keygen -t rsa</span>
+<span class="token comment"># 完成后生成两个文件：id_rsa 、 id_rsa.pub</span>
+<span class="token comment"># 其中 .pub是公钥，另一个是私钥</span>
 
-3. 将公钥信息public key添加到 平台账户 中即可
+<span class="token number">3</span>. 将公钥信息public key添加到 平台账户 中即可
 
-4. 使用平台创建一个自己的仓库
+<span class="token number">4</span>. 使用平台创建一个自己的仓库
 
-![image-20210502183157859](C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20210502183157859.png)
+<span class="token operator">!</span><span class="token punctuation">[</span>image-20210502183157859<span class="token punctuation">]</span><span class="token punctuation">(</span>C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>HP<span class="token punctuation">\</span>AppData<span class="token punctuation">\</span>Roaming<span class="token punctuation">\</span>Typora<span class="token punctuation">\</span>typora-user-images<span class="token punctuation">\</span>image-20210502183157859.png<span class="token punctuation">)</span>
 
-5. 克隆到本地
+<span class="token number">5</span>. 克隆到本地
 
 
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h1 id="六、Git分支"><a href="#六、Git分支" class="headerlink" title="六、Git分支"></a>六、Git分支</h1><p>以上都是单人操作，但接下来的多人操作需要分支：</p>
 <p>分支在GIT中相对较难，分支就是科幻电影里面的平行宇宙，如果两个平行宇宙互不干扰，那对现在的你也没啥影响。不过在某个时间点，两个平行宇宙合并了，我们就需要处理一些问题了!</p>
 <p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20210502184706038.png" alt="image-20210502184706038"></p>
 <p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20210502184759987.png" alt="image-20210502184759987"></p>
-<h2 id="Git中常用的分支命令"><a href="#Git中常用的分支命令" class="headerlink" title="Git中常用的分支命令"></a>Git中常用的分支命令</h2><pre><code class="bash"># 列出所有本地分支
-git branch
+<h2 id="Git中常用的分支命令"><a href="#Git中常用的分支命令" class="headerlink" title="Git中常用的分支命令"></a>Git中常用的分支命令</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 列出所有本地分支</span>
+<span class="token function">git</span> branch
 
-# 列出所有的远程分支，并切换到该分支
-git branch [分支名]
+<span class="token comment"># 列出所有的远程分支，并切换到该分支</span>
+<span class="token function">git</span> branch <span class="token punctuation">[</span>分支名<span class="token punctuation">]</span>
 
-# 合并指定分支到当前分支
-git merge [branch]
+<span class="token comment"># 合并指定分支到当前分支</span>
+<span class="token function">git</span> merge <span class="token punctuation">[</span>branch<span class="token punctuation">]</span>
 
-# 删除分支
-git branch -d [分支名]
+<span class="token comment"># 删除分支</span>
+<span class="token function">git</span> branch -d <span class="token punctuation">[</span>分支名<span class="token punctuation">]</span>
 
-# 删除源程分支
-git push origin --delete [分支名]
-git branch -dr [remote/branch]
-</code></pre>
+<span class="token comment"># 删除源程分支</span>
+<span class="token function">git</span> push origin --delete <span class="token punctuation">[</span>分支名<span class="token punctuation">]</span>
+<span class="token function">git</span> branch -dr <span class="token punctuation">[</span>remote/branch<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>如果同一个文件在合并分支时都被修改了则会引起冲突︰解决的办法是我们可以修改冲突文件后重新提交!选择要保留他的代码还是你的代码!</p>
 <p><strong>master主分支应该非常稳定，用来发布新版本，一般情况下不允许在上面工作，工作一般情况下在新建的dev分支上工作，工作完后，比如上要发布，或者说dev分支代码稳定后可以合并到主分支master上来。</strong></p>
 <h2 id="Git分支模型"><a href="#Git分支模型" class="headerlink" title="Git分支模型"></a>Git分支模型</h2><p>![20180624174835949](D:\QQ doc\FileRecv\20180624174835949.png)</p>

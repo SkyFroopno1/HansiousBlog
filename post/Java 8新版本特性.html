@@ -190,7 +190,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Java" style=color:#1bccbc>
+                <a href="/tags/Java" style=color:#00bcd4>
                     Java
                 </a>
             </span>
@@ -211,18 +211,18 @@
 <h2 id="1-1-Lambda表达式"><a href="#1-1-Lambda表达式" class="headerlink" title="1.1 Lambda表达式"></a>1.1 Lambda表达式</h2><blockquote>
 <p>例子</p>
 </blockquote>
-<pre><code class="java">//标准写法
-Comparator&lt;Integer&gt; cmp = new Comparator&lt;Integer&gt;() &#123;
-    @Override
-    public int compare(Integer o1, Integer o2) &#123;
-        return Integer.compare(o1,o2);
-    &#125;
-&#125;;
-// Lambda表达式 
-Comparator&lt;Integer&gt; cmp1 = (o1, o2) -&gt; Integer.compare(o1,o2);
-// 更简洁的Lambda表达式 
-Comparator&lt;Integer&gt; cmp2 = Integer::compare;
-</code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//标准写法</span>
+<span class="token class-name">Comparator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> cmp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Comparator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">compare</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> o1<span class="token punctuation">,</span> <span class="token class-name">Integer</span> o2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">compare</span><span class="token punctuation">(</span>o1<span class="token punctuation">,</span>o2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token comment">// Lambda表达式 </span>
+<span class="token class-name">Comparator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> cmp1 <span class="token operator">=</span> <span class="token punctuation">(</span>o1<span class="token punctuation">,</span> o2<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">compare</span><span class="token punctuation">(</span>o1<span class="token punctuation">,</span>o2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 更简洁的Lambda表达式 </span>
+<span class="token class-name">Comparator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> cmp2 <span class="token operator">=</span> <span class="token class-name">Integer</span><span class="token operator">::</span><span class="token function">compare</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <blockquote>
 <p>本质</p>
 </blockquote>
@@ -234,32 +234,20 @@ Comparator&lt;Integer&gt; cmp2 = Integer::compare;
 <p><code>-&gt;</code> Lambda操作符，或箭头操作符，左边是形参列表(其实就是接口中的抽象方法中的形参列表)；右边是Lmbda体，其实就是重写的抽象方法的方法体。</p>
 <ul>
 <li><p>语法格式一：无参，无返回值</p>
-<pre><code class="java">Runnable r = () -&gt; System.out.println(&quot;无参，无返回值&quot;);
-</code></pre>
-</li>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Runnable</span> r <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"无参，无返回值"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>语法格式二：一个参数，没有返回值</p>
-<pre><code class="java">Consumer&lt;String&gt; con = (String s) -&gt; System.out.println(s);
-</code></pre>
-</li>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Consumer</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> con <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>语法格式三：数据类型可以省略，因为可由编译器推断出，成为类型推断</p>
-<pre><code class="java">Consumer&lt;String&gt; con =  (s) -&gt; System.out.println(s);
-</code></pre>
-</li>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Consumer</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> con <span class="token operator">=</span>  <span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>语法格式四：Lambda若只有一个参数，小括号可以省略</p>
-<pre><code class="java">Consumer&lt;String&gt; con =  s -&gt; System.out.println(s);
-</code></pre>
-</li>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Consumer</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> con <span class="token operator">=</span>  s <span class="token operator">-></span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>语法格式五：需要两个或以上参数，多条执行语句，并且有返回值</p>
-<pre><code class="java">Comparator&lt;Integer&gt; comparator = (x,y)-&gt;&#123;
-    System.out.println(&quot;实现函数式接口方法&quot;);  
-    return Integer.compare(x,y);
-&#125;;
-</code></pre>
-</li>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Comparator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> comparator <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span><span class="token operator">-></span><span class="token punctuation">&#123;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"实现函数式接口方法"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token keyword">return</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">compare</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p>语法格式六：当Lambda体只有一条语句时，return和大括号可以省略</p>
-<pre><code class="java">Comparator&lt;Integer&gt; comparator = (x,y)-&gt; Integer.compare(x,y);
-</code></pre>
-</li>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Comparator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> comparator <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span><span class="token operator">-></span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">compare</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <blockquote>
 <p>类型推断</p>
@@ -436,13 +424,13 @@ Comparator&lt;Integer&gt; cmp2 = Integer::compare;
 <li><code>T orElseGet(Supplier&lt;? extends T&gt; other)</code>：如果有值则直接返回，否则返回由Supplier接口实现提供的对象</li>
 <li><code>T orElseThrow(Supplier&lt;? extends X&gt; exceptionSupplier)</code>：如果有值则将其返回，否则抛出由Supplier接口实现提供的异常</li>
 </ul>
-<h2 id="1-6-Collector-lt-T-A-R-gt"><a href="#1-6-Collector-lt-T-A-R-gt" class="headerlink" title="1.6 Collector&lt;T, A, R&gt;"></a>1.6 Collector&lt;T, A, R&gt;</h2><pre><code class="java">// 用于还原操作的输入元素的类型
-&lt;T&gt; the type of input elements to the reduction operation
-// 中间存放数据的容器
-&lt;A&gt; the mutable accumulation type of the reduction operation (often hidden as an implementation detail)
-// 还原操作的结果类型（输出）
-&lt;R&gt; the result type of the reduction operation
-</code></pre>
+<h2 id="1-6-Collector-lt-T-A-R-gt"><a href="#1-6-Collector-lt-T-A-R-gt" class="headerlink" title="1.6 Collector&lt;T, A, R&gt;"></a>1.6 Collector&lt;T, A, R&gt;</h2> <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 用于还原操作的输入元素的类型</span>
+<span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> the type of input elements <span class="token keyword">to</span> <span class="token namespace">the</span> reduction operation
+<span class="token comment">// 中间存放数据的容器</span>
+<span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">A</span><span class="token punctuation">></span></span> the mutable accumulation type of the reduction operation <span class="token punctuation">(</span>often hidden as an implementation detail<span class="token punctuation">)</span>
+<span class="token comment">// 还原操作的结果类型（输出）</span>
+<span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">R</span><span class="token punctuation">></span></span> the result type of the reduction operation<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>Collector通过下面四个方法协同工作以完成汇聚操作：</p>
 <ul>
 <li>supplier： 创建新的结果容器</li>
@@ -482,36 +470,38 @@ Comparator&lt;Integer&gt; cmp2 = Integer::compare;
 <h2 id="1-7-Function-lt-T-R-gt"><a href="#1-7-Function-lt-T-R-gt" class="headerlink" title="1.7 Function&lt;T, R&gt;"></a>1.7 Function&lt;T, R&gt;</h2><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20220224171449056.png" alt="image-20220224171449056" style="zoom: 67%;" />
 
 <p>“接收一个参数，返回一个值”</p>
-<pre><code class="java">public interface Function&lt;T, R&gt; &#123;
-    /**
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Function</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">/**
     * 将此函数应用于给定参数，真正执行函数接口的方法
-    */
-    R apply(T t);
+    */</span>
+    <span class="token class-name">R</span> <span class="token function">apply</span><span class="token punctuation">(</span><span class="token class-name">T</span> t<span class="token punctuation">)</span><span class="token punctuation">;</span>
     
-    /**
+    <span class="token comment">/**
     * 函数链，before执行的结果做根函数为参数
-    */
-    default &lt;V&gt; Function&lt;V, R&gt; compose(Function&lt;? super V, ? extends T&gt; before)&#123;
-        Objects.requireNonNull(before);
-        return (V v) -&gt; apply(before.apply(v));
-    &#125;
+    */</span>
+    <span class="token keyword">default</span> <span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">V</span><span class="token punctuation">></span></span> <span class="token class-name">Function</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">V</span><span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">></span></span> <span class="token function">compose</span><span class="token punctuation">(</span><span class="token class-name">Function</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span> <span class="token keyword">super</span> <span class="token class-name">V</span><span class="token punctuation">,</span> <span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">T</span><span class="token punctuation">></span></span> before<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token class-name">Objects</span><span class="token punctuation">.</span><span class="token function">requireNonNull</span><span class="token punctuation">(</span>before<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token class-name">V</span> v<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token function">apply</span><span class="token punctuation">(</span>before<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
     
-    /**
+    <span class="token comment">/**
     * 函数链，根函数执行结果作为after的参数
-    */
-    default &lt;V&gt; Function&lt;V, R&gt; compose(Function&lt;? super R, ? extends V&gt; after)&#123;
-        Objects.requireNonNull(after);
-        return (V v) -&gt; apply(after.apply(v));
-    &#125;
+    */</span>
+    <span class="token keyword">default</span> <span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">V</span><span class="token punctuation">></span></span> <span class="token class-name">Function</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">V</span><span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">></span></span> <span class="token function">compose</span><span class="token punctuation">(</span><span class="token class-name">Function</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span> <span class="token keyword">super</span> <span class="token class-name">R</span><span class="token punctuation">,</span> <span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">V</span><span class="token punctuation">></span></span> after<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token class-name">Objects</span><span class="token punctuation">.</span><span class="token function">requireNonNull</span><span class="token punctuation">(</span>after<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token class-name">V</span> v<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token function">apply</span><span class="token punctuation">(</span>after<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
     
-    /**
+    <span class="token comment">/**
     * 返回一个参数作为返回值的函数
-    */
-    static &lt;T&gt; Function&lt;T,T&gt; identity() &#123;
-        return t -&gt; t;
-    &#125;
-&#125;
-</code></pre>
+    */</span>
+    <span class="token keyword">static</span> <span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token class-name">Function</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">,</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token function">identity</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> t <span class="token operator">-></span> t<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <ul>
 <li>BiFunction&lt;T,U,R&gt;：代表了一个接受两个输入参数的方法，并且返回一个结果</li>
 <li>DoubleFunction&lt; R&gt;：代表接受一个double值参数的方法，并且返回结果</li>
@@ -530,39 +520,61 @@ Comparator&lt;Integer&gt; cmp2 = Integer::compare;
 <li>ToLongBiFunction&lt;T,U&gt;：接受两个输入参数，返回一个long类型结果。</li>
 <li>ToLongFunction&lt; T&gt;：接受一个输入参数，返回一个long类型结果。</li>
 </ul>
-<h1 id="二、实战应用"><a href="#二、实战应用" class="headerlink" title="二、实战应用"></a>二、实战应用</h1><h2 id="2-1-收集器-Collectors"><a href="#2-1-收集器-Collectors" class="headerlink" title="2.1 收集器(Collectors)"></a>2.1 收集器(Collectors)</h2><pre><code class="java">// 获取所有的name转换到List&lt;String&gt;中
-List&lt;String&gt; list =people.stream()
-    .map(Person::getName).collect(Collectors.toList());
+<h1 id="二、实战应用"><a href="#二、实战应用" class="headerlink" title="二、实战应用"></a>二、实战应用</h1><h2 id="2-1-收集器-Collectors"><a href="#2-1-收集器-Collectors" class="headerlink" title="2.1 收集器(Collectors)"></a>2.1 收集器(Collectors)</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 获取所有的name转换到List&lt;String>中</span>
+<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> list <span class="token operator">=</span>people<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token class-name">Person</span><span class="token operator">::</span><span class="token function">getName</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 获取所有的name转换到Set&lt;String&gt;中
-Set&lt;String&gt; set =people.stream()
-  .map(Person::getName).collect(Collectors.toCollection(TreeSet::new));
+<span class="token comment">// 获取所有的name转换到Set&lt;String>中</span>
+<span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> set <span class="token operator">=</span>people<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token class-name">Person</span><span class="token operator">::</span><span class="token function">getName</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">toCollection</span><span class="token punctuation">(</span><span class="token class-name">TreeSet</span><span class="token operator">::</span><span class="token keyword">new</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 元素转换为String 并且将他们通过&quot;, &quot; 连接起来
-String joined = things.stream()
-    .map(Object::toString)
-    .collect(Collectors.joining(&quot;, &quot;));
+<span class="token comment">// 元素转换为String 并且将他们通过", " 连接起来</span>
+<span class="token class-name">String</span> joined <span class="token operator">=</span> things<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token class-name">Object</span><span class="token operator">::</span><span class="token function">toString</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">joining</span><span class="token punctuation">(</span><span class="token string">", "</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-//计算员工薪水之和
-int total = employees.stream()
-    .collect(Collectors.summingInt(Employee::getSalary)));
+<span class="token comment">//计算员工薪水之和</span>
+<span class="token keyword">int</span> total <span class="token operator">=</span> employees<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">summingInt</span><span class="token punctuation">(</span><span class="token class-name">Employee</span><span class="token operator">::</span><span class="token function">getSalary</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 按照部门对员工进行分组
-Map&lt;Department, List&lt;Employee&gt;&gt; byDept
-    = employees.stream()
-    .collect(Collectors.groupingBy(Employee::getDepartment));
+<span class="token comment">// 按照部门对员工进行分组</span>
+<span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Department</span><span class="token punctuation">,</span> <span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Employee</span><span class="token punctuation">></span><span class="token punctuation">></span></span> byDept
+    <span class="token operator">=</span> employees<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">groupingBy</span><span class="token punctuation">(</span><span class="token class-name">Employee</span><span class="token operator">::</span><span class="token function">getDepartment</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 计算部门薪资和
-Map&lt;Department, Integer&gt; totalByDept
-    = employees.stream()
-    .collect(Collectors.groupingBy(Employee::getDepartment,
-                                   Collectors.summingInt(Employee::getSalary)));
+<span class="token comment">// 计算部门薪资和</span>
+<span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Department</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span> totalByDept
+    <span class="token operator">=</span> employees<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">groupingBy</span><span class="token punctuation">(</span><span class="token class-name">Employee</span><span class="token operator">::</span><span class="token function">getDepartment</span><span class="token punctuation">,</span>
+                                   <span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">summingInt</span><span class="token punctuation">(</span><span class="token class-name">Employee</span><span class="token operator">::</span><span class="token function">getSalary</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 按照成绩是否通过把学生分为两组
-Map&lt;Boolean, List&lt;Student&gt;&gt; passingFailing =
-    students.stream()
-    .collect(Collectors.partitioningBy(s -&gt; s.getGrade() &gt;= PASS_THRESHOLD));
-</code></pre>
+<span class="token comment">// 按照成绩是否通过把学生分为两组</span>
+<span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Boolean</span><span class="token punctuation">,</span> <span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Student</span><span class="token punctuation">></span><span class="token punctuation">></span></span> passingFailing <span class="token operator">=</span>
+    students<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">partitioningBy</span><span class="token punctuation">(</span>s <span class="token operator">-></span> s<span class="token punctuation">.</span><span class="token function">getGrade</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">>=</span> PASS_THRESHOLD<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </div>
 

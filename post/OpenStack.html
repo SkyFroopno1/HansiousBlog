@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hexo || Hello World</title>
+    <title>Hexo || OpenStack 部署</title>
     <meta name="author" content="John Doe">
     <meta name="description" content=" ">
     <meta name="keywords" content=" ">
@@ -169,35 +169,90 @@
 <link rel="stylesheet" href="/css/post-body.css">
 <div class="article">
     <div>
-        <h1>Hello World </h1>
+        <h1>OpenStack 部署 </h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <a-icon type="calendar" theme="filled" />
             </span>
-            2022/5/18
+            2020/12/1
         </span>
 
         
 
         
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/云计算" style=color:#ffa2c4>
+                    云计算
+                </a>
+            </span>
+            
+        </span>
+        
     </div>
 
     <div class="content" v-pre>
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        <h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><p>Nova调用KVM(libvirt)服务提供虚拟化</p>
+<p>Nuetron提供网络服务</p>
+<p>Glance 提供镜像模板</p>
+<p>cinder 提供存储服务</p>
+<p>Cellometer 监控-&gt; Cinder、Nova、Glance</p>
+<p>Swift 对象存储</p>
+<p>Heat 编排服务：启动服务器集群</p>
+<p>存储类型：块存储、文件存储、对象存储</p>
+<p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20210913130944845.png" alt="image-20210913130944845"></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">0.0</span>.0.0:9696            <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">13960</span>/server.log    
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">0.0</span>.0.0:6080            <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">1167</span>/python2        
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">0.0</span>.0.0:8774            <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">20411</span>/python2       
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">0.0</span>.0.0:9191            <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">20343</span>/python2       
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">0.0</span>.0.0:8775            <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">1162</span>/python2        
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">0.0</span>.0.0:25672           <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">1172</span>/beam.smp       
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">192.168</span>.10.43:3306      <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">1705</span>/mysqld         
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">192.168</span>.10.43:11211     <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">5458</span>/memcached      
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">127.0</span>.0.1:11211         <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">5458</span>/memcached      
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">192.168</span>.10.43:2379      <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">1212</span>/etcd           
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">0.0</span>.0.0:9292            <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">1170</span>/python2        
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">192.168</span>.10.43:2380      <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">1212</span>/etcd           
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">0.0</span>.0.0:111             <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">657</span>/rpcbind         
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">0.0</span>.0.0:4369            <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">1</span>/systemd           
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">0.0</span>.0.0:22              <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">1174</span>/sshd           
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">127.0</span>.0.1:631           <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">1154</span>/cupsd          
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">127.0</span>.0.1:25            <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">1590</span>/master         
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">127.0</span>.0.1:6010          <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">45180</span>/sshd: root@pt 
+tcp6       <span class="token number">0</span>      <span class="token number">0</span> :::5000                 :::*                    LISTEN      <span class="token number">5540</span>/httpd          
+tcp6       <span class="token number">0</span>      <span class="token number">0</span> :::5672                 :::*                    LISTEN      <span class="token number">1172</span>/beam.smp       
+tcp6       <span class="token number">0</span>      <span class="token number">0</span> :::8778                 :::*                    LISTEN      <span class="token number">5540</span>/httpd          
+tcp6       <span class="token number">0</span>      <span class="token number">0</span> ::1:11211               :::*                    LISTEN      <span class="token number">5458</span>/memcached      
+tcp6       <span class="token number">0</span>      <span class="token number">0</span> :::111                  :::*                    LISTEN      <span class="token number">657</span>/rpcbind         
+tcp6       <span class="token number">0</span>      <span class="token number">0</span> :::80                   :::*                    LISTEN      <span class="token number">5540</span>/httpd          
+tcp6       <span class="token number">0</span>      <span class="token number">0</span> :::22                   :::*                    LISTEN      <span class="token number">1174</span>/sshd           
+tcp6       <span class="token number">0</span>      <span class="token number">0</span> ::1:631                 :::*                    LISTEN      <span class="token number">1154</span>/cupsd          
+tcp6       <span class="token number">0</span>      <span class="token number">0</span> ::1:25                  :::*                    LISTEN      <span class="token number">1590</span>/master         
+tcp6       <span class="token number">0</span>      <span class="token number">0</span> ::1:6010                :::*                    LISTEN      <span class="token number">45180</span>/sshd: root@pt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+<h1 id="状态检查"><a href="#状态检查" class="headerlink" title="状态检查"></a>状态检查</h1><p>openstack token issue 检查KeyStone是否正常</p>
+<p>openstack image list 检查glance是否正常</p>
+<p>openstack compute service list 检查nova是否正常</p>
+<p>域、项目、用户</p>
 
     </div>
 

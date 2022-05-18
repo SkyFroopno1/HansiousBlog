@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hexo || OpenStack 部署</title>
+    <title>Hexo || Hello World</title>
     <meta name="author" content="John Doe">
     <meta name="description" content=" ">
     <meta name="keywords" content=" ">
@@ -169,80 +169,35 @@
 <link rel="stylesheet" href="/css/post-body.css">
 <div class="article">
     <div>
-        <h1>OpenStack 部署 </h1>
+        <h1>Hello World </h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <a-icon type="calendar" theme="filled" />
             </span>
-            2020/12/1
+            2022/5/18
         </span>
 
         
 
-        
-
-        <span class="tags">
-            <span class="icon">
-                <a-icon type="tags" theme="filled" />
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/云计算" style=color:#879cff>
-                    云计算
-                </a>
-            </span>
-            
-        </span>
         
     </div>
 
     <div class="content" v-pre>
-        <h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><p>Nova调用KVM(libvirt)服务提供虚拟化</p>
-<p>Nuetron提供网络服务</p>
-<p>Glance 提供镜像模板</p>
-<p>cinder 提供存储服务</p>
-<p>Cellometer 监控-&gt; Cinder、Nova、Glance</p>
-<p>Swift 对象存储</p>
-<p>Heat 编排服务：启动服务器集群</p>
-<p>存储类型：块存储、文件存储、对象存储</p>
-<p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20210913130944845.png" alt="image-20210913130944845"></p>
-<pre><code class="bash">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
-tcp        0      0 0.0.0.0:9696            0.0.0.0:*               LISTEN      13960/server.log    
-tcp        0      0 0.0.0.0:6080            0.0.0.0:*               LISTEN      1167/python2        
-tcp        0      0 0.0.0.0:8774            0.0.0.0:*               LISTEN      20411/python2       
-tcp        0      0 0.0.0.0:9191            0.0.0.0:*               LISTEN      20343/python2       
-tcp        0      0 0.0.0.0:8775            0.0.0.0:*               LISTEN      1162/python2        
-tcp        0      0 0.0.0.0:25672           0.0.0.0:*               LISTEN      1172/beam.smp       
-tcp        0      0 192.168.10.43:3306      0.0.0.0:*               LISTEN      1705/mysqld         
-tcp        0      0 192.168.10.43:11211     0.0.0.0:*               LISTEN      5458/memcached      
-tcp        0      0 127.0.0.1:11211         0.0.0.0:*               LISTEN      5458/memcached      
-tcp        0      0 192.168.10.43:2379      0.0.0.0:*               LISTEN      1212/etcd           
-tcp        0      0 0.0.0.0:9292            0.0.0.0:*               LISTEN      1170/python2        
-tcp        0      0 192.168.10.43:2380      0.0.0.0:*               LISTEN      1212/etcd           
-tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      657/rpcbind         
-tcp        0      0 0.0.0.0:4369            0.0.0.0:*               LISTEN      1/systemd           
-tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1174/sshd           
-tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      1154/cupsd          
-tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      1590/master         
-tcp        0      0 127.0.0.1:6010          0.0.0.0:*               LISTEN      45180/sshd: root@pt 
-tcp6       0      0 :::5000                 :::*                    LISTEN      5540/httpd          
-tcp6       0      0 :::5672                 :::*                    LISTEN      1172/beam.smp       
-tcp6       0      0 :::8778                 :::*                    LISTEN      5540/httpd          
-tcp6       0      0 ::1:11211               :::*                    LISTEN      5458/memcached      
-tcp6       0      0 :::111                  :::*                    LISTEN      657/rpcbind         
-tcp6       0      0 :::80                   :::*                    LISTEN      5540/httpd          
-tcp6       0      0 :::22                   :::*                    LISTEN      1174/sshd           
-tcp6       0      0 ::1:631                 :::*                    LISTEN      1154/cupsd          
-tcp6       0      0 ::1:25                  :::*                    LISTEN      1590/master         
-tcp6       0      0 ::1:6010                :::*                    LISTEN      45180/sshd: root@pt
-</code></pre>
-<h1 id="状态检查"><a href="#状态检查" class="headerlink" title="状态检查"></a>状态检查</h1><p>openstack token issue 检查KeyStone是否正常</p>
-<p>openstack image list 检查glance是否正常</p>
-<p>openstack compute service list 检查nova是否正常</p>
-<p>域、项目、用户</p>
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
     </div>
 

@@ -190,7 +190,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/运维" style=color:#ffa2c4>
+                <a href="/tags/运维" style=color:#00bcd4>
                     运维
                 </a>
             </span>
@@ -201,13 +201,15 @@
 
     <div class="content" v-pre>
         <h1 id="Nginx概述"><a href="#Nginx概述" class="headerlink" title="Nginx概述"></a>Nginx概述</h1><p>Nginx (engine x)是一个高性能的HTTP和反向代理web服务器，同时也提供了IMAP/POP3/SMTP服务</p>
-<h1 id="Nginx常用命令"><a href="#Nginx常用命令" class="headerlink" title="Nginx常用命令"></a>Nginx常用命令</h1><pre><code class="bash">cd /usr/local/nginx/sbin/
-./nginx #启动
-./nginx -s stop   # 停止
-./nginx -s quit   # 安全退出
-./nginx -s reload # 重新加载配置文件
-ps auxlgrep nginx # 查看nginx进程
-</code></pre>
+<h1 id="Nginx常用命令"><a href="#Nginx常用命令" class="headerlink" title="Nginx常用命令"></a>Nginx常用命令</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /usr/local/nginx/sbin/
+./nginx <span class="token comment">#启动</span>
+./nginx -s stop   <span class="token comment"># 停止</span>
+./nginx -s quit   <span class="token comment"># 安全退出</span>
+./nginx -s reload <span class="token comment"># 重新加载配置文件</span>
+<span class="token function">ps</span> auxlgrep nginx <span class="token comment"># 查看nginx进程</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h1 id="Nginx语法匹配规则"><a href="#Nginx语法匹配规则" class="headerlink" title="Nginx语法匹配规则"></a>Nginx语法匹配规则</h1><p>语法规则： location [=|<del>|</del>*|^~] /uri/ { … }</p>
 <ul>
 <li>= 开头表示精确匹配</li>
@@ -219,54 +221,54 @@ ps auxlgrep nginx # 查看nginx进程
 </ul>
 <p>多个location配置的情况下匹配顺序为（参考资料而来，还未实际验证，试试就知道了，不必拘泥，仅供参考）：首先匹配 =，其次匹配^~, 其次是按文件中顺序的正则匹配，最后是交给 / 通用匹配。当有匹配成功时候，停止匹配，按当前匹配规则处理请求。</p>
 <p>例子，有如下匹配规则：</p>
-<pre><code class="shell">location = / &#123;    # 精确匹配，必须是127.0.0.1/
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">location <span class="token operator">=</span> / <span class="token punctuation">&#123;</span>    <span class="token comment"># 精确匹配，必须是127.0.0.1/</span>
 
-#规则A
+<span class="token comment">#规则A</span>
 
-&#125;
+<span class="token punctuation">&#125;</span>
 
-location = /login &#123;    # 精确匹配，必须是127.0.0.1/login
+location <span class="token operator">=</span> /login <span class="token punctuation">&#123;</span>    <span class="token comment"># 精确匹配，必须是127.0.0.1/login</span>
 
-#规则B
+<span class="token comment">#规则B</span>
 
-&#125;
+<span class="token punctuation">&#125;</span>
 
-location ^~ /static/ &#123;    # 非精确匹配，并且不区分大小写，比如127.0.0.1/static/js.
+location ^~ /static/ <span class="token punctuation">&#123;</span>    <span class="token comment"># 非精确匹配，并且不区分大小写，比如127.0.0.1/static/js.</span>
 
-#规则C
+<span class="token comment">#规则C</span>
 
-&#125;
+<span class="token punctuation">&#125;</span>
 
-location ~ \.(gif|jpg|png|js|css)$ &#123;    # 区分大小写，以gif,jpg,js结尾
+location ~ <span class="token punctuation">\</span>.<span class="token punctuation">(</span>gif<span class="token operator">|</span>jpg<span class="token operator">|</span>png<span class="token operator">|</span>js<span class="token operator">|</span>css<span class="token punctuation">)</span>$ <span class="token punctuation">&#123;</span>    <span class="token comment"># 区分大小写，以gif,jpg,js结尾</span>
 
-#规则D
+<span class="token comment">#规则D</span>
 
-&#125;
+<span class="token punctuation">&#125;</span>
 
-location ~* \.png$ &#123;     # 不区分大小写，匹配.png结尾的
+location ~* <span class="token punctuation">\</span>.png$ <span class="token punctuation">&#123;</span>     <span class="token comment"># 不区分大小写，匹配.png结尾的</span>
 
-#规则E
+<span class="token comment">#规则E</span>
 
-&#125;
+<span class="token punctuation">&#125;</span>
 
-location !~ \.xhtml$ &#123;   # 区分大小写，匹配不已.xhtml结尾的
+location <span class="token operator">!</span>~ <span class="token punctuation">\</span>.xhtml$ <span class="token punctuation">&#123;</span>   <span class="token comment"># 区分大小写，匹配不已.xhtml结尾的</span>
 
-#规则F
+<span class="token comment">#规则F</span>
 
-&#125;
+<span class="token punctuation">&#125;</span>
 
-location !~* \.xhtml$ &#123;
+location <span class="token operator">!</span>~* <span class="token punctuation">\</span>.xhtml$ <span class="token punctuation">&#123;</span>
 
-#规则G
+<span class="token comment">#规则G</span>
 
-&#125;
+<span class="token punctuation">&#125;</span>
 
-location / &#123;  # 什么都可以
+location / <span class="token punctuation">&#123;</span>  <span class="token comment"># 什么都可以</span>
 
-#规则H
+<span class="token comment">#规则H</span>
 
-&#125;
-</code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>那么产生的效果如下：</p>
 <ul>
 <li>访问根目录/， 比如<a target="_blank" rel="noopener" href="http://localhost/">http://localhost/</a> 将匹配规则A</li>
@@ -281,139 +283,151 @@ location / &#123;  # 什么都可以
 <blockquote>
 <p>实际中常用</p>
 </blockquote>
-<pre><code class="shell">#这里是直接转发给后端应用服务器了，也可以是一个静态首页
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#这里是直接转发给后端应用服务器了，也可以是一个静态首页</span>
 
-# 第一个必选规则
+<span class="token comment"># 第一个必选规则</span>
 
-location = / &#123;
-
-proxy_pass http://tomcat:8080/index
-
-&#125;
-
-# 第二个必选规则是处理静态文件请求，这是nginx作为http服务器的强项
-
-# 有两种配置模式，目录匹配或后缀匹配,任选其一或搭配使用
-
-location ^~ /static/ &#123;
-
-root /webroot/static/;
-
-&#125;
-
-location ~* \.(gif|jpg|jpeg|png|css|js|ico)$ &#123;
-
-root /webroot/res/;
-
-&#125;
-
-#第三个规则就是通用规则，用来转发动态请求到后端应用服务器
-
-#非静态文件请求就默认是动态请求，自己根据实际把握
-
-#毕竟目前的一些框架的流行，带.php,.jsp后缀的情况很少了
-
-location / &#123;
-
-proxy_pass http://tomcat:8080/
-
-&#125;
-
-#直接匹配网站根，通过域名访问网站首页比较频繁，使用这个会加速处理，官网如是说。
-
-#这里是直接转发给后端应用服务器了，也可以是一个静态首页
-
-# 第一个必选规则
-
-location = / &#123;
+location <span class="token operator">=</span> / <span class="token punctuation">&#123;</span>
 
 proxy_pass http://tomcat:8080/index
 
-&#125;
+<span class="token punctuation">&#125;</span>
 
-# 第二个必选规则是处理静态文件请求，这是nginx作为http服务器的强项
+<span class="token comment"># 第二个必选规则是处理静态文件请求，这是nginx作为http服务器的强项</span>
 
-# 有两种配置模式，目录匹配或后缀匹配,任选其一或搭配使用
+<span class="token comment"># 有两种配置模式，目录匹配或后缀匹配,任选其一或搭配使用</span>
 
-location ^~ /static/ &#123;
+location ^~ /static/ <span class="token punctuation">&#123;</span>
 
-root /webroot/static/;
+root /webroot/static/<span class="token punctuation">;</span>
 
-&#125;
+<span class="token punctuation">&#125;</span>
 
-location ~* \.(gif|jpg|jpeg|png|css|js|ico)$ &#123;
+location ~* <span class="token punctuation">\</span>.<span class="token punctuation">(</span>gif<span class="token operator">|</span>jpg<span class="token operator">|</span>jpeg<span class="token operator">|</span>png<span class="token operator">|</span>css<span class="token operator">|</span>js<span class="token operator">|</span>ico<span class="token punctuation">)</span>$ <span class="token punctuation">&#123;</span>
 
-root /webroot/res/;
+root /webroot/res/<span class="token punctuation">;</span>
 
-&#125;
+<span class="token punctuation">&#125;</span>
 
-#第三个规则就是通用规则，用来转发动态请求到后端应用服务器
+<span class="token comment">#第三个规则就是通用规则，用来转发动态请求到后端应用服务器</span>
 
-#非静态文件请求就默认是动态请求，自己根据实际把握
+<span class="token comment">#非静态文件请求就默认是动态请求，自己根据实际把握</span>
 
-#毕竟目前的一些框架的流行，带.php,.jsp后缀的情况很少了
+<span class="token comment">#毕竟目前的一些框架的流行，带.php,.jsp后缀的情况很少了</span>
 
-location / &#123;
+location / <span class="token punctuation">&#123;</span>
 
 proxy_pass http://tomcat:8080/
 
-&#125;
-</code></pre>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">#直接匹配网站根，通过域名访问网站首页比较频繁，使用这个会加速处理，官网如是说。</span>
+
+<span class="token comment">#这里是直接转发给后端应用服务器了，也可以是一个静态首页</span>
+
+<span class="token comment"># 第一个必选规则</span>
+
+location <span class="token operator">=</span> / <span class="token punctuation">&#123;</span>
+
+proxy_pass http://tomcat:8080/index
+
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment"># 第二个必选规则是处理静态文件请求，这是nginx作为http服务器的强项</span>
+
+<span class="token comment"># 有两种配置模式，目录匹配或后缀匹配,任选其一或搭配使用</span>
+
+location ^~ /static/ <span class="token punctuation">&#123;</span>
+
+root /webroot/static/<span class="token punctuation">;</span>
+
+<span class="token punctuation">&#125;</span>
+
+location ~* <span class="token punctuation">\</span>.<span class="token punctuation">(</span>gif<span class="token operator">|</span>jpg<span class="token operator">|</span>jpeg<span class="token operator">|</span>png<span class="token operator">|</span>css<span class="token operator">|</span>js<span class="token operator">|</span>ico<span class="token punctuation">)</span>$ <span class="token punctuation">&#123;</span>
+
+root /webroot/res/<span class="token punctuation">;</span>
+
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">#第三个规则就是通用规则，用来转发动态请求到后端应用服务器</span>
+
+<span class="token comment">#非静态文件请求就默认是动态请求，自己根据实际把握</span>
+
+<span class="token comment">#毕竟目前的一些框架的流行，带.php,.jsp后缀的情况很少了</span>
+
+location / <span class="token punctuation">&#123;</span>
+
+proxy_pass http://tomcat:8080/
+
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
 <h1 id="反向代理配置"><a href="#反向代理配置" class="headerlink" title="反向代理配置"></a>反向代理配置</h1><p>配置文件结构：</p>
-<pre><code class="bash">http&#123;
-    (http 配置)
-    
-    server&#123;
-        listen  80;
-        server_name localhost;
-        # 代理
-        location / &#123;
-            # xxxx
-            root 
-            index
-            proxy_pass #代理服务
-        &#125;
-        
-        location / &#123;
-            # xxxx
-        &#125;
-    &#125;
-    
-    server&#123;
-        listen  443;
-        server_name localhost;
-        # 代理
-    &#125;
-    (......)
-&#125;
-</code></pre>
-<h1 id="负载均衡配置"><a href="#负载均衡配置" class="headerlink" title="负载均衡配置"></a>负载均衡配置</h1><pre><code class="shell">http&#123;
-    (http 配置)
-    
-    upstream name&#123;
-        # 负载均衡策略
-        [轮询(default) | weight | ip_hash | fair]
-        # 负载均衡服务器列表
-        server IP:Port weight = x;
-        ...
-    &#125;
-    
-    server&#123;
-        listen  80;
-        server_name localhost;
-        # 代理
-        location / &#123;
-            # xxxx
-            root 
-            index
-            # 代理服务
-            proxy_pass http://[upstream起的name];
-        &#125;
-        
-    &#125;
-    
-&#125;
-</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">http<span class="token punctuation">&#123;</span>
+	<span class="token punctuation">(</span>http 配置<span class="token punctuation">)</span>
+	
+	server<span class="token punctuation">&#123;</span>
+		listen  <span class="token number">80</span><span class="token punctuation">;</span>
+		server_name localhost<span class="token punctuation">;</span>
+		<span class="token comment"># 代理</span>
+		location / <span class="token punctuation">&#123;</span>
+			<span class="token comment"># xxxx</span>
+			root 
+			index
+			proxy_pass <span class="token comment">#代理服务</span>
+		<span class="token punctuation">&#125;</span>
+		
+		location / <span class="token punctuation">&#123;</span>
+			<span class="token comment"># xxxx</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>
+	
+	server<span class="token punctuation">&#123;</span>
+		listen  <span class="token number">443</span><span class="token punctuation">;</span>
+		server_name localhost<span class="token punctuation">;</span>
+		<span class="token comment"># 代理</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">(</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+<h1 id="负载均衡配置"><a href="#负载均衡配置" class="headerlink" title="负载均衡配置"></a>负载均衡配置</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">http<span class="token punctuation">&#123;</span>
+	<span class="token punctuation">(</span>http 配置<span class="token punctuation">)</span>
+	
+	upstream name<span class="token punctuation">&#123;</span>
+		<span class="token comment"># 负载均衡策略</span>
+		<span class="token punctuation">[</span>轮询<span class="token punctuation">(</span>default<span class="token punctuation">)</span> <span class="token operator">|</span> weight <span class="token operator">|</span> ip_hash <span class="token operator">|</span> fair<span class="token punctuation">]</span>
+		<span class="token comment"># 负载均衡服务器列表</span>
+		server IP:Port weight <span class="token operator">=</span> x<span class="token punctuation">;</span>
+		<span class="token punctuation">..</span>.
+	<span class="token punctuation">&#125;</span>
+	
+	server<span class="token punctuation">&#123;</span>
+		listen  <span class="token number">80</span><span class="token punctuation">;</span>
+		server_name localhost<span class="token punctuation">;</span>
+		<span class="token comment"># 代理</span>
+		location / <span class="token punctuation">&#123;</span>
+			<span class="token comment"># xxxx</span>
+			root 
+			index
+			<span class="token comment"># 代理服务</span>
+			proxy_pass http://<span class="token punctuation">[</span>upstream起的name<span class="token punctuation">]</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		
+	<span class="token punctuation">&#125;</span>
+	
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <p>分配策略：</p>
 <ul>
 <li>轮询(默认)：每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除</li>
@@ -427,92 +441,91 @@ proxy_pass http://tomcat:8080/
 <li>另外一种方法就是动态跟静态文件混合在一起发布，通过nginx来分开。</li>
 </ol>
 <p>通过location指定不同的后缀名实现不同的请求转发。通过expires参数设置，可以使浏览器缓存过期时间，减少与服务器之前的请求和流量。具体Expires定义:是给一个资源设定一个过期时间,也就是说无需去服务端验证,直接通过浏览器自身确认是否过期即可，所以不会产生额外的流量。此种方法非常适合不经常变动的资源。(如果经常更新的文件，不建议使用Expires来缓存)，我这里设置3d，表示在这3天之内访问这个URL，发送一个请求，比对服务器该文件最后更新时间没有变化，则不会从服务器抓取，返回状态码304，如果有修改，则直接从服务器重新下载，返回状态码200。</p>
-<pre><code class="shell">http&#123;
-    (http 配置)
-    
-    server&#123;
-        listen  80;
-        server_name localhost;
-        # 代理
-        location /规则1 &#123;
-            # xxxx
-            root 
-            index
-            # 代理服务
-            proxy_pass http://[upstream起的name];
-        &#125;
-        
-        location /规则2 &#123;
-            # xxxx
-            root 
-            index
-            # 代理服务
-            proxy_pass http://[upstream起的name];
-        &#125;
-        
-    &#125;
-    
-&#125;
-</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">http<span class="token punctuation">&#123;</span>
+	<span class="token punctuation">(</span>http 配置<span class="token punctuation">)</span>
+	
+	server<span class="token punctuation">&#123;</span>
+		listen  <span class="token number">80</span><span class="token punctuation">;</span>
+		server_name localhost<span class="token punctuation">;</span>
+		<span class="token comment"># 代理</span>
+		location /规则1 <span class="token punctuation">&#123;</span>
+			<span class="token comment"># xxxx</span>
+			root 
+			index
+			<span class="token comment"># 代理服务</span>
+			proxy_pass http://<span class="token punctuation">[</span>upstream起的name<span class="token punctuation">]</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		
+		location /规则2 <span class="token punctuation">&#123;</span>
+			<span class="token comment"># xxxx</span>
+			root 
+			index
+			<span class="token comment"># 代理服务</span>
+			proxy_pass http://<span class="token punctuation">[</span>upstream起的name<span class="token punctuation">]</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		
+	<span class="token punctuation">&#125;</span>
+	
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h1 id="高可用集群"><a href="#高可用集群" class="headerlink" title="高可用集群"></a>高可用集群</h1><p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20220109203922527.png" alt="image-20220109203922527"></p>
 <ul>
 <li><p>需要两台Nginx服务器</p>
 </li>
 <li><p>需要Keepalived</p>
 <ul>
-<li><pre><code class="bash">yum install keepalived -y
-</code></pre>
-</li>
-<li><p>在etc里面生成目录keepalived，有文件keepalived.conf</p>
-<pre><code class="shell"># 全局配置
-glocal_defs &#123;
-    notification_email&#123;
-        acassen@firewall.loc
-        failover@firewall.loc
-        sysadmin@firewall.loc
-    &#125;
-    notification_email_from Alexandre.Cassen@firewall.loc
-    smtp_server 主机IP
-    smtp_counnect_timeout 30 
-    router_id 主机名 # 访问到主机 /etc/hosts中编辑
-&#125;
+<li><p>```bash<br>yum install keepalived -y</p>
+<pre class="line-numbers language-none"><code class="language-none">
+- 在etc里面生成目录keepalived，有文件keepalived.conf
 
-# 检测脚本配置
-vrrp_script chk_http_port &#123;
-    script &quot;/usr/local/src/nginx_check.sh&quot;
-    interval 2 # 检测脚本执行的间隔
-    weight 2 # 权重，设置当前服务器的一个权重
-&#125;
-
-# 虚拟IP的配置
-vrrp_instance VI_1&#123;
-    state MASTER # 备份服务器上讲MASTER换成BACKUP
-    interface ens33 # 网卡
-    virtual_router_id 51 # 主备机的virtual_router id 必须相同
-    priority 100 # 主备机取不同的优先级，主机值较大，备份机较小
-    advert_int 1 # 时间间隔
-    authtication &#123;
-        auth_type PASS
-        auth_pass 1111
-    &#125;
-    viretual_ipaddress &#123;
-        # VRRP H虚拟地址
-    &#125;
-&#125;
-</code></pre>
-</li>
+  &#96;&#96;&#96;shell
+  # 全局配置
+  glocal_defs &#123;
+  	notification_email&#123;
+  		acassen@firewall.loc
+  		failover@firewall.loc
+  		sysadmin@firewall.loc
+  	&#125;
+  	notification_email_from Alexandre.Cassen@firewall.loc
+  	smtp_server 主机IP
+  	smtp_counnect_timeout 30 
+  	router_id 主机名 # 访问到主机 &#x2F;etc&#x2F;hosts中编辑
+  &#125;
+  
+  # 检测脚本配置
+  vrrp_script chk_http_port &#123;
+  	script &quot;&#x2F;usr&#x2F;local&#x2F;src&#x2F;nginx_check.sh&quot;
+  	interval 2 # 检测脚本执行的间隔
+  	weight 2 # 权重，设置当前服务器的一个权重
+  &#125;
+  
+  # 虚拟IP的配置
+  vrrp_instance VI_1&#123;
+  	state MASTER # 备份服务器上讲MASTER换成BACKUP
+  	interface ens33 # 网卡
+  	virtual_router_id 51 # 主备机的virtual_router id 必须相同
+  	priority 100 # 主备机取不同的优先级，主机值较大，备份机较小
+  	advert_int 1 # 时间间隔
+  	authtication &#123;
+  		auth_type PASS
+  		auth_pass 1111
+  	&#125;
+  	viretual_ipaddress &#123;
+  		# VRRP H虚拟地址
+  	&#125;
+  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p>检测脚本nginx_check.sh</p>
-<pre><code class="shell"># !/bin/bash
-A = `ps -C nginx -no-header |wc -l`
-if [$A -eq 0]; then
-    /usr/local/nginx/sbin/nginx
-    sleep 2
-    if [`ps -C nginx --no-header |wc -l` -eq 0]; then
-        killall keepalived
-    fi
-fi
-</code></pre>
-</li>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># !/bin/bash</span>
+A <span class="token operator">=</span> <span class="token variable"><span class="token variable">`</span><span class="token function">ps</span> -C nginx -no-header <span class="token operator">|</span><span class="token function">wc</span> -l<span class="token variable">`</span></span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token variable">$A</span> -eq <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+	/usr/local/nginx/sbin/nginx
+	<span class="token function">sleep</span> <span class="token number">2</span>
+	<span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token variable"><span class="token variable">`</span><span class="token function">ps</span> -C nginx --no-header <span class="token operator">|</span><span class="token function">wc</span> -l<span class="token variable">`</span></span> -eq <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+		<span class="token function">killall</span> keepalived
+    <span class="token keyword">fi</span>
+<span class="token keyword">fi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 </li>
 <li><p>需要虚拟ip</p>
